@@ -1,21 +1,15 @@
 import { createServer } from 'http';
-import express from 'express';
 import flaschenpost from 'flaschenpost';
+import getApp from './getApp';
 import processenv from 'processenv';
 
 const logger = flaschenpost.getLogger();
 
-const app = express();
-
-app.get('/', (_, res) => {
-  res.write('Hallo TypeScript!');
-  res.end();
-});
-
+const app = getApp();
 const server = createServer(app);
 
 const port = processenv('PORT', 3000);
 
-server.listen(port, () => {
+server.listen(port, (): void => {
   logger.info('Server started.', { port });
 });

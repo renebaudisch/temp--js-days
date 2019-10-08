@@ -1,11 +1,14 @@
 import Price from './Price';
 
 class Article {
-  name: string;
+  public name: string;
 
-  price: Price;
+  public price: Price;
 
-  constructor (name: string, price: Price) {
+  public constructor ({ name, price }: {
+    name: string;
+    price: Price;
+  }) {
     this.name = name;
     this.price = price;
   }

@@ -2,15 +2,18 @@
 
 const http = require('http');
 
-const express = require('express');
+const flaschenpost = require('flaschenpost').default,
+      processenv = require('processenv').default;
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {
-    'content-type': 'text/html'
-  });
-  res.write('Hallo Welt!<br />');
-  res.write(req.method + ' ' + req.url);
-  res.end();
+const getApp = require('./lib/getApp');
+
+const logger = flaschenpost.getLogger();
+
+const app = getApp();
+const server = http.createServer(app);
+
+const port = processenv('PORT', 3000);
+
+server.listen(port, () => {
+  logger.info('Server started.', { port });
 });
-
-server.listen(3000);

@@ -2,6 +2,20 @@
   "name": "my-app",
   "version": "0.0.1",
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "flaschenpost": "3.1.0",
+    "processenv": "2.0.1"
+  },
+  "devDependencies": {
+    "assertthat": "4.0.2",
+    "eslint": "6.5.1",
+    "eslint-config-es": "3.14.1",
+    "mocha": "6.2.1",
+    "supertest": "4.0.2"
+  },
+  "scripts": {
+    "analyse": "npx eslint *.js lib test",
+    "pretest": "npm run analyse",
+    "test": "npx mocha --bail --recursive --ui tdd"
   }
 }
